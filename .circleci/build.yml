@@ -4,6 +4,7 @@ workflows:
   sample-nix-workflow:
     jobs:
       - nix/build:
+          execute: /root/project/result/bin/hello-haskell
 
       - nix/shell:
           command: java -version

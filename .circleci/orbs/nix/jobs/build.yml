@@ -1,4 +1,7 @@
 description: Build a default.nix file
+parameters:
+  execute:
+    type: string
 
 docker:
 - image: lnl7/nix
@@ -7,5 +10,5 @@ steps:
 - checkout
 - run:
     command: nix build
-    environment:
-      HOME: /root
+- run:
+    command: << parameters.execute >>
