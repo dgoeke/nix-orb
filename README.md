@@ -15,3 +15,6 @@ This looks for and builds `default.nix` in the local directory, caches/restores 
 parameter.  After building, it executes a binary named in the `execute` parameter.
 
 This repo include a sample "Hello World" Haskell project along with a nix expression for building it.
+
+Sample build output:
+https://circleci.com/gh/dgoeke/nix-orb/27
