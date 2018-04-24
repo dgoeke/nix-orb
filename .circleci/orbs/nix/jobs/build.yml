@@ -1,0 +1,9 @@
+description: Build a default.nix file
+
+docker:
+- image: lnl7/nix
+
+steps:
+- checkout
+- run:
+    command: nix build

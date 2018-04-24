@@ -3,8 +3,17 @@ workflows:
   version: 2
   sample-nix-workflow:
     jobs:
+    - build: {}
     - shell: {}
 jobs:
+  build:
+    description: Build a default.nix file
+    docker:
+    - image: lnl7/nix
+    steps:
+    - checkout
+    - run:
+        command: nix build
   shell:
     description: Run a command in a nix shell
     docker:
