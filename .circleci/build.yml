@@ -4,7 +4,7 @@ workflows:
   sample-nix-workflow:
     jobs:
       - nix/build:
-          cache-key: hello-haskell-{{ checksum "app.nix" }}-{{ checksum "default.nix" }}
+          cache-key: hello-haskell
 
       - execute-hello:
           requires:

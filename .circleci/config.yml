@@ -16,11 +16,11 @@ jobs:
     - checkout
     - restore_cache:
         keys:
-        - hello-haskell-{{ checksum &quot;app.nix&quot; }}-{{ checksum &quot;default.nix&quot; }}
+        - hello-haskell
     - run:
         command: nix build
     - save_cache:
-        key: hello-haskell-{{ checksum &quot;app.nix&quot; }}-{{ checksum &quot;default.nix&quot; }}
+        key: hello-haskell
         paths:
         - /nix
     - persist_to_workspace:
