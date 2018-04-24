@@ -3,8 +3,15 @@ workflows:
   version: 2
   sample-nix-workflow:
     jobs:
-      - nix/build:
-          execute: /root/project/result/bin/hello-haskell
+      - nix/build
+      - execute-hello:
+          requires:
+            - build
 
-      - nix/shell:
-          command: java -version
+jobs:
+  execute-hello:
+    steps:
+      - attach_workspace:
+          at: /project/root
+      - run:
+          command: /project/root/result/bin/hello-haskell

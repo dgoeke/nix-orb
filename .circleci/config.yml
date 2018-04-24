@@ -4,7 +4,9 @@ workflows:
   sample-nix-workflow:
     jobs:
     - build: {}
-    - shell: {}
+    - execute-hello:
+        requires:
+        - build
 jobs:
   build:
     description: Build a default.nix file
@@ -14,13 +16,13 @@ jobs:
     - checkout
     - run:
         command: nix build
-    - run:
-        command: /root/project/result/bin/hello-haskell
-  shell:
-    description: Run a command in a nix shell
-    docker:
-    - image: lnl7/nix
+    - persist_to_workspace:
+        root: /root/project
+        paths:
+        - result
+  execute-hello:
     steps:
-    - checkout
+    - attach_workspace:
+        at: /project/root
     - run:
-        command: nix-shell --command 'java -version'
+        command: /project/root/result/bin/hello-haskell
