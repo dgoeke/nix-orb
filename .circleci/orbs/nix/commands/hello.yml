@@ -1,0 +1,9 @@
+description: Say Hello To Someone
+parameters:
+  who:
+    type: string
+steps:
+- run:
+    command: echo Hello World
+- run:
+    command: echo Hello << parameters.who >>

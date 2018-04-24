@@ -1,0 +1,11 @@
+description: Run a command in a nix shell
+parameters:
+  run:
+    type: string
+
+docker:
+- image: lnl7/nix
+
+steps:
+- run:
+    command: nix << parameters.run >>

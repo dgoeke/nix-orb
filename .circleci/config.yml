@@ -1,0 +1,14 @@
+version: 2
+workflows:
+  version: 2
+  hello-workflow:
+    jobs:
+    - shell: {}
+jobs:
+  shell:
+    description: Run a command in a nix shell
+    docker:
+    - image: lnl7/nix
+    steps:
+    - run:
+        command: nix show-config
