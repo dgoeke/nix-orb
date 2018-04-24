@@ -7,3 +7,5 @@ steps:
 - checkout
 - run:
     command: nix build
+    environment:
+      HOME: /root
