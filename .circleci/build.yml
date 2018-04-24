@@ -13,7 +13,7 @@ workflows:
 jobs:
   execute-hello:
     docker:
-      - image: alpine:3.6
+      - image: circleci/buildpack-deps:18.04-curl-dind
     steps:
       - attach_workspace:
           at: /project/root
