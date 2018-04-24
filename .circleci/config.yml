@@ -1,7 +1,7 @@
 version: 2
 workflows:
   version: 2
-  hello-workflow:
+  sample-nix-workflow:
     jobs:
     - shell: {}
 jobs:
@@ -10,5 +10,6 @@ jobs:
     docker:
     - image: lnl7/nix
     steps:
+    - checkout
     - run:
-        command: nix show-config
+        command: nix-shell --command 'java -version'

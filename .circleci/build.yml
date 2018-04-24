@@ -1,7 +1,7 @@
 version: 2
 workflows:
   version: 2
-  hello-workflow:
+  sample-nix-workflow:
     jobs:
       - nix/shell:
-          run: show-config
+          command: java -version

@@ -1,11 +1,12 @@
 description: Run a command in a nix shell
 parameters:
-  run:
+  command:
     type: string
 
 docker:
 - image: lnl7/nix
 
 steps:
+- checkout
 - run:
-    command: nix << parameters.run >>
+    command: nix-shell --command '<< parameters.command >>'
