@@ -14,8 +14,15 @@ jobs:
     - image: lnl7/nix
     steps:
     - checkout
+    - restore_cache:
+        keys:
+        - hello-haskell-{{ checksum &quot;app.nix&quot; }}-{{ checksum &quot;default.nix&quot; }}
     - run:
         command: nix build
+    - save_cache:
+        key: hello-haskell-{{ checksum &quot;app.nix&quot; }}-{{ checksum &quot;default.nix&quot; }}
+        paths:
+        - /nix
     - persist_to_workspace:
         root: /root/project
         paths:

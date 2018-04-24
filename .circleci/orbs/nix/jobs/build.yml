@@ -1,12 +1,27 @@
 description: Build a default.nix file
 
+parameters:
+  cache-key:
+    type: string
+
 docker:
 - image: lnl7/nix
 
 steps:
 - checkout
+
+- restore_cache:
+    keys:
+      - << parameters.cache-key >>
+
 - run:
     command: nix build
+
+- save_cache:
+    key: << parameters.cache-key >>
+    paths:
+      - /nix
+
 - persist_to_workspace:
     root: /root/project
     paths:
