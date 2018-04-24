@@ -21,6 +21,7 @@ jobs:
         paths:
         - result
   execute-hello:
+    machine: true
     steps:
     - attach_workspace:
         at: /project/root
