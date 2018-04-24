@@ -10,7 +10,8 @@ workflows:
 
 jobs:
   execute-hello:
-    machine: true
+    docker:
+      - image: alpine:3.6
     steps:
       - attach_workspace:
           at: /project/root
