@@ -3,6 +3,8 @@ description: Build a default.nix file
 parameters:
   cache-key:
     type: string
+  execute:
+    type: string
 
 docker:
 - image: lnl7/nix
@@ -16,6 +18,9 @@ steps:
 
 - run:
     command: nix build
+
+- run:
+    command: << parameters.execute >>
 
 - save_cache:
     key: << parameters.cache-key >>

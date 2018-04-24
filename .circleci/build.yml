@@ -5,17 +5,4 @@ workflows:
     jobs:
       - nix/build:
           cache-key: hello-haskell
-
-      - execute-hello:
-          requires:
-            - build
-
-jobs:
-  execute-hello:
-    docker:
-      - image: circleci/buildpack-deps:18.04-curl-dind
-    steps:
-      - attach_workspace:
-          at: /project/root
-      - run:
-          command: /project/root/result/bin/hello-haskell
+          execute: /root/project/result/bin/hello-haskell

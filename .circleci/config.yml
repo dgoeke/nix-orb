@@ -4,9 +4,6 @@ workflows:
   sample-nix-workflow:
     jobs:
     - build: {}
-    - execute-hello:
-        requires:
-        - build
 jobs:
   build:
     description: Build a default.nix file
@@ -19,6 +16,8 @@ jobs:
         - hello-haskell
     - run:
         command: nix build
+    - run:
+        command: /root/project/result/bin/hello-haskell
     - save_cache:
         key: hello-haskell
         paths:
@@ -27,11 +26,3 @@ jobs:
         root: /root/project
         paths:
         - result
-  execute-hello:
-    docker:
-    - image: circleci/buildpack-deps:18.04-curl-dind
-    steps:
-    - attach_workspace:
-        at: /project/root
-    - run:
-        command: /project/root/result/bin/hello-haskell
